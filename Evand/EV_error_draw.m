@@ -1,23 +1,23 @@
 function [err] = EV_error_draw(draw_flag,avp,avp_,avp_flag)
-% avp£º»ù×¼
-% avp_£ºÓÃÓÚ¶Ô±ÈµÄ¼ÓËÙ¶È¡¢ËÙ¶È¡¢Î»ÖÃ
-% avp_flag£ºÑ¡ÔñÊä³öµÄÊÇa¡¢v¡¢pÖĞµÄÄÄÒ»¸ö
-%% »æÍ¼
+% avpï¼šåŸºå‡†
+% avp_ï¼šç”¨äºå¯¹æ¯”çš„åŠ é€Ÿåº¦ã€é€Ÿåº¦ã€ä½ç½®
+% avp_flagï¼šé€‰æ‹©è¾“å‡ºçš„æ˜¯aã€vã€pä¸­çš„å“ªä¸€ä¸ª
+%% ç»˜å›¾
 if nargin == 3
-    avp_flag = 'p'; % p=Î»ÖÃ
+    avp_flag = 'p'; % p=ä½ç½®
 end
 switch avp_flag
     case 'a'
         avp_flag_bit = 1;
-        title_flag = '¼ÓËÙ¶È';
+        title_flag = 'åŠ é€Ÿåº¦';
     case 'v'
         avp_flag_bit = 2;
-        title_flag = 'ËÙ¶È';
+        title_flag = 'é€Ÿåº¦';
     case 'p'
         avp_flag_bit = 3;
-        title_flag = 'Î»ÖÃ';
+        title_flag = 'ä½ç½®';
     otherwise
-        warning('»æÍ¼Ê±Ñ¡Ôñavp´íÎó');
+        warning('ç»˜å›¾æ—¶é€‰æ‹©avpé”™è¯¯');
 end
 len = length(avp(:,7));
 cir = length(draw_flag(:,1));
@@ -27,39 +27,39 @@ for i1 = 1:cir
     hold on
     plot(1:10:len,avp_{i1}(:,3*avp_flag_bit-2)-avp(1:10:len,3*avp_flag_bit-2));
 end
-title('XÖáÎó²î¶Ô±È-',title_flag);legend(draw_flag);
+title('Xè½´è¯¯å·®å¯¹æ¯”-',title_flag);legend(draw_flag);
 subplot(3,2,3);
 for i1 = 1:cir
     hold on
     plot(1:10:len,avp_{i1}(:,3*avp_flag_bit-1)-avp(1:10:len,3*avp_flag_bit-1));
 end
-title('YÖáÎó²î¶Ô±È-',title_flag);
+title('Yè½´è¯¯å·®å¯¹æ¯”-',title_flag);
 subplot(3,2,5);
 for i1 = 1:cir
     hold on
     plot(1:10:len,avp_{i1}(:,3*avp_flag_bit)-avp(1:10:len,3*avp_flag_bit));
 end
-title('ZÖáÎó²î¶Ô±È-',title_flag);
+title('Zè½´è¯¯å·®å¯¹æ¯”-',title_flag);
 subplot(3,2,2);
 for i1 = 1:cir
     hold on
     cdfplot(abs(avp_{i1}(:,3*avp_flag_bit-2)-avp(1:10:len,3*avp_flag_bit-2)));
 end
-title('XÖáÀÛ»ı¸ÅÂÊÃÜ¶È-',title_flag);
+title('Xè½´ç´¯ç§¯æ¦‚ç‡å¯†åº¦-',title_flag);
 subplot(3,2,4);
 for i1 = 1:cir
     hold on
     cdfplot(abs(avp_{i1}(:,3*avp_flag_bit-1)-avp(1:10:len,3*avp_flag_bit-1)));
 end
-title('YÖáÀÛ»ı¸ÅÂÊÃÜ¶È-',title_flag);
+title('Yè½´ç´¯ç§¯æ¦‚ç‡å¯†åº¦-',title_flag);
 subplot(3,2,6);
 for i1 = 1:cir
     hold on
     cdfplot(abs(avp_{i1}(:,3*avp_flag_bit)-avp(1:10:len,3*avp_flag_bit)));
 end
-title('ZÖáÀÛ»ı¸ÅÂÊÃÜ¶È-',title_flag);
-%% Îó²îÊä³ö
-err = 0; %²âÊÔ
+title('Zè½´ç´¯ç§¯æ¦‚ç‡å¯†åº¦-',title_flag);
+%% è¯¯å·®è¾“å‡º
+err = 0; %æµ‹è¯•
 
 
 
