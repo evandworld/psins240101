@@ -13,8 +13,8 @@ function dxyz = dpos2dxyz(dpos, pos0)
 % 11/01/2022
     if nargin<2, pos0 = zeros(3,1); end;
     n=4;
-%     if size(dpos,2)==3, dpos = [dpos, (1:length(dpos))']; n=3; end
-    if size(dpos,2)==3, dpos = [dpos, (1:size(dpos,1))']; n=3; end %这一行是自己改的——Evand
+    if size(dpos,2)==3, dpos = [dpos, (1:length(dpos))']; n=3; end
+%     if size(dpos,2)==3, dpos = [dpos, (1:size(dpos,1))']; n=3; end %这一行是自己改的——Evand
 
     pos = [[pos0;0]'; [dpos(:,1)+pos0(1),dpos(:,2)+pos0(2),dpos(:,3)+pos0(3), dpos(:,4)]];
     dxyz = pos2dxyz(pos, pos0);

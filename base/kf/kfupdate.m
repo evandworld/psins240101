@@ -28,15 +28,15 @@ function kf = kfupdate(kf, yk, TimeMeasBoth)
 % Northwestern Polytechnical University, Xi An, P.R.China
 % 08/12/2012, 29/08/2013, 16/04/2015, 01/06/2017, 11/03/2018
     if nargin==1;
-        TimeMeasBoth = 'T';
+        TimeMeasBoth = 'T'; %【】
     elseif nargin==2
         TimeMeasBoth = 'B';
     end
     
-    if TimeMeasBoth=='T'            % Time Updating
-        kf.xk = kf.Phikk_1*kf.xk;    
-        kf.Pxk = kf.Phikk_1*kf.Pxk*kf.Phikk_1' + kf.Gammak*kf.Qk*kf.Gammak';
-        kf.measstop = kf.measstop - kf.nts;  kf.measlost = kf.measlost + kf.nts;
+    if TimeMeasBoth=='T'            % Time Updating %【】
+        kf.xk = kf.Phikk_1*kf.xk;     %【】
+        kf.Pxk = kf.Phikk_1*kf.Pxk*kf.Phikk_1' + kf.Gammak*kf.Qk*kf.Gammak'; %【】
+        kf.measstop = kf.measstop - kf.nts;  kf.measlost = kf.measlost + kf.nts; %【】
     else
         if TimeMeasBoth=='M'        % Meas Updating
             kf.xkk_1 = kf.xk;    
